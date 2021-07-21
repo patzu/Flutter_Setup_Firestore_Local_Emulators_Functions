@@ -70,8 +70,42 @@ void fruit() async {
   }
 ```
 
+6-1 Sample 2
+---
+```
+ exports.hello = functions.region(deploymentRegion).https.onCall((data, context) => {
+  return {
+      response : "hello " + data.message,
+  }
+});
+```
 
 
+6-2: calling the firebase function in flutter:
+-----
+```
+ Future<void> checkZipCode() async {
+    FirebaseFunctions firebaseFunctions =
+        FirebaseFunctions.instanceFor(region: "europe-west1");
+    String host = Platform.isAndroid ? '10.0.2.2' : 'localhost';
+    int port = Platform.isAndroid ? 5001 : 8080;
+    firebaseFunctions.useFunctionsEmulator(host, port);
+
+    HttpsCallable callable = firebaseFunctions.httpsCallable('hello');
+
+    try {
+      final HttpsCallableResult result = await callable.call(
+        <String, dynamic>{
+          'message': 'Patzu!',
+        },
+      );
+      print(result.data['response']);
+    } on Exception catch (e) {
+      print('caught firebase functions exception');
+      print(e);
+    }
+  }
+```
 
 
 
