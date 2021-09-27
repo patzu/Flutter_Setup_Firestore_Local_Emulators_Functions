@@ -110,7 +110,6 @@ void fruit() async {
   }
 ```
 
-
 ----------------
 
 7- Configuring flutter app to work with firebase authentication in local emulators.
@@ -125,7 +124,6 @@ Add one of the below lines before authentication function call see which one wor
  
 ```
 Sample:
-
 ```
  Future<LocalUser?> signInAnonymously({required BuildContext context}) async {
     firebaseAuth.useAuthEmulator('127.0.0.1',9099);
@@ -135,7 +133,6 @@ Sample:
     return LocalUser(user: userCredential.user);
   }
  ```
- 
 If you get network error do as follow.
 
 Second-1: For Android.
