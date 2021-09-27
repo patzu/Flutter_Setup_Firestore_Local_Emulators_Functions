@@ -113,7 +113,8 @@ void fruit() async {
 
 ----------------
 
-Configuring flutter app to work with firebase authentication in local emulators.
+7- Configuring flutter app to work with firebase authentication in local emulators.
+---
 
 First:
 
