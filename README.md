@@ -111,7 +111,53 @@ void fruit() async {
 ```
 
 
+----------------
 
+Configuring flutter app to work with firebase authentication in local emulators.
+
+First:
+
+Add one of the below lines before authentication function call see which one working for me loopback IP worked:
+
+ firebaseAuth.useAuthEmulator('127.0.0.1',9099);
+ //firebaseAuth.useAuthEmulator('http://localhost',9099);
+Sample:
+
+```
+ Future<LocalUser?> signInAnonymously({required BuildContext context}) async {
+    firebaseAuth.useAuthEmulator('127.0.0.1',9099);
+    //firebaseAuth.useAuthEmulator('http://localhost',9099);
+
+    UserCredential userCredential = await firebaseAuth.signInAnonymously();
+    return LocalUser(user: userCredential.user);
+  }
+ ```
+ 
+If you get network error do as follow.
+
+Second-1: For Android.
+
+Add android:usesCleartextTraffic="true" in AndroidManifest.xml path: android/app/src/main/AndroidManifest.xml.
+
+```
+ <application
+    android:usesCleartextTraffic="true"      //<========
+    android:name="io.flutter.app.FlutterApplication"
+    android:label="firebaseauthexample"
+    android:icon="@mipmap/ic_launcher">
+```
+    
+Second-2: For IOS.
+
+Add bellow code here ios/Runner/Info.plist
+```
+<key>NSAppTransportSecurity</key>
+<dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+</dict>
+
+```
 
 
 
