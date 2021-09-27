@@ -43,6 +43,9 @@ firebase emulators:start
 ```
 firebase emulators:start --only functions
 ```
+```
+firebase emulators:start --only "functions,auth,firestore"
+```
 
 4- Sample function:
 -------------------------------
