@@ -119,9 +119,11 @@ void fruit() async {
 First:
 
 Add one of the below lines before authentication function call see which one working for me loopback IP worked:
-
+```
  firebaseAuth.useAuthEmulator('127.0.0.1',9099);
  //firebaseAuth.useAuthEmulator('http://localhost',9099);
+ 
+```
 Sample:
 
 ```
